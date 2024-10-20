@@ -11,15 +11,16 @@ ul li {
 body {
   background-color: #10141f;
   color: white;
+  padding: 1rem 2rem;
+  overflow-x: hidden;
 }
 
 .page-holder {
   position: relative;
-  padding: 20px 0;
   display: flex;
   height: 100vh;
-  width: 100vw;
 }
+
 @media screen and (max-width: 767px) {
   .page-holder {
     flex-direction: column;
@@ -27,10 +28,13 @@ body {
 }
 
 .page-holder .page {
-  padding: 20px 0 20px 20px;
+  padding: 20px;
 }
 
-@media screen and (max-width: 767px) {
+img {
+  max-width: 100%;
+  filter: brightness(0.5);
+  -webkit-filter: brightness(0.5);
 }
 
 nav {
@@ -61,11 +65,12 @@ nav {
 
 nav div {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-grow: 1;
+  justify-content: space-evenly;
   align-items: center;
   height: 50%;
   padding: 12px 20px;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 767px) {
@@ -78,9 +83,39 @@ nav div {
     width: 30px;
   }
 }
+nav:hover {
+  background-color: aliceblue;
+  transition: 1s ease-in;
+  -webkit-transition: 1s ease-in;
+  -moz-transition: 1s ease-in;
+  -ms-transition: 1s ease-in;
+  -o-transition: 1s ease-in;
+}
+nav a:hover img {
+  transform: scale(2);
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  filter: brightness(100%);
+  transition: 1s ease-in-out;
+  -webkit-transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -ms-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+}
+
+nav a:focus img {
+  filter: sepia(100%);
+  -webkit-filter: sepia(100%);
+}
+
+/* search */
+
 .search {
   display: flex;
   align-items: center;
+  width: 90%;
 }
 
 .search input {
@@ -92,6 +127,31 @@ nav div {
   caret-color: white;
   color: white;
   font-size: 24px;
+  width: 10%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.search:hover input {
+  background-color: aliceblue;
+  color: #141b2b;
+  width: 100%;
+  transition: 1s linear;
+  -webkit-transition: 1s linear;
+  -moz-transition: 1s linear;
+  -ms-transition: 1s linear;
+  -o-transition: 1s linear;
+  -webkit-transform: ;
+  -moz-transform: ;
+  -ms-transform: ;
+  -o-transform: ;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 /* trending section */
 h1 {
@@ -100,6 +160,7 @@ h1 {
 
 .page .trending .image-holder {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   justify-content: space-evenly;
 }
@@ -109,11 +170,13 @@ h1 {
     gap: 0;
   }
 }
-.trending .box {
+
+.trending .box,
+.recommended .box {
   position: relative;
   height: fit-content;
+  cursor: pointer;
 }
-
 .page .trending .image {
   position: relative;
   overflow: hidden;
@@ -122,10 +185,26 @@ h1 {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  overflow: hidden;
 }
 
 .page .trending img {
   max-width: 100%;
+}
+
+.box:hover .image img {
+  filter: brightness(1);
+  transform: scale(1.2) rotate(4deg);
+  -webkit-transform: scale(1.2) rotate(4deg);
+  -moz-transform: scale(1.2) rotate(4deg);
+  -ms-transform: scale(1.2) rotate(4deg);
+  -o-transform: scale(1.2) rotate(4deg);
+  transition: transform 1s ease-in;
+  -webkit-transition: transform 1s ease-in;
+  -moz-transition: transform 1s ease-in;
+  -ms-transition: transform 1s ease-in;
+  -o-transition: transform 1s ease-in;
+  -webkit-filter: brightness(1);
 }
 
 .page .trending .mark {
@@ -164,15 +243,12 @@ h1 {
   align-items: center;
   gap: 20px;
   margin-top: 20px;
+  justify-content: center;
 }
 @media screen and (max-width: 767px) {
   .page .recommended .image-holder {
     gap: 0;
   }
-}
-.recommended .box {
-  position: relative;
-  height: auto;
 }
 
 .page .recommended .image {
